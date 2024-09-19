@@ -1,15 +1,33 @@
-<h1>Welcome to the Sample App</h1>
+<div class="container">
+  <section class="bg1">
+    <div id="text">
+      <div id="menubar">
+        <div>
+          <ul>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#gallery">GALLERY</a></li>
+            <li><a href="#access">ACCESS</a></li>
+          </ul>
+        </div>
+        <ul class="icons">
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram-square"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <aside class="mainimg-tate"></aside>
+  <aside class="mainimg-yoko"></aside>
+</div>
 
-<% if user_signed_in? %>
-  <p>
-    <%= form_with url: destroy_user_session_path, method: :delete do |form| %>
-      <%= form.submit "ログアウト", class: 'dropdown-item' %>
-    <% end %>
-  </p>
-<% else %>
-  <p>
-    <%= link_to 'ログイン', new_user_session_path %> |
-    <%= link_to 'サインアップ', new_user_registration_path %> |
-    <%= link_to 'ゲストログイン', guest_login_path, method: :post %>
-  </p>
-<% end %>
+<!--jQueryの読み込み-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!--lightbox用jsファイルの読み込み-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox-plus-jquery.min.js"></script>
+
+<!--スライドショー（vegas）-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vegas/2.5.4/vegas.min.js"></script>
+<script src="js/vegas.js"></script>
