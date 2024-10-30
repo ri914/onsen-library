@@ -1,46 +1,92 @@
+/* app/assets/stylesheets/application.scss */
+
 @import 'top';
 
-body  {
-  margin-top: 0px;
+html, body {
+    font-size: 16px; /* 文字サイズ */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #333; /* 全体の文字色 */
+    font-family: "游明朝", "Yu Mincho", "游明朝体", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro"; /* フォント種類 */
+    line-height: 1.6; /* 行間 */
+    background: #e8e4df url(../images/bg.jpg); /* 背景色、背景壁紙の読み込み */
+    -webkit-text-size-adjust: none;
+    overflow-x: hidden;
 }
 
 nav {
-  border-bottom: 2px solid lightgray;
-  background-color: #f8f9fa;
+    border-bottom: 2px solid gray; /* ボーダー色を変更 */
+    background-color: #343a40; /* ダークな背景色 */
 }
 
 nav ul {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    display: flex;
+    justify-content: center; /* 中央揃え */
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 nav ul li {
-  position: relative;
+    position: relative;
 }
 
 nav ul li:not(:last-child) {
-  margin-right: 20px;
+    margin-right: 20px; /* アイテム間のスペース */
 }
 
 nav ul li a {
-  display: block;
-  padding: 15px 20px;
-  text-decoration: none;
-  color: #333;
-  transition: color 0.3s, background-color 0.3s;
-  border-radius: 5px;
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #ffffff; /* リンクの文字色を白に */
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 5px;
 }
 
 nav ul li a:hover {
-  background-color: #F8E750;
-  color: #333;
+    background-color: #F8E750; /* ホバー時の背景色 */
+    color: #333; /* ホバー時の文字色 */
 }
 
 nav ul li.current a {
-  font-weight: bold;
-  border-bottom: 2px solid #007BFF;
-  color: #007BFF;
+    font-weight: bold;
+    border-bottom: 2px solid #F8E750; /* 現在のリンクのボーダー色 */
+    color: #F8E750; /* 現在のリンクの文字色 */
+}
+
+/* ドロップダウンメニューのスタイル */
+.dropdown-menu {
+    border: none; /* ボーダーを消す */
+    border-radius: 0; /* 角を丸めない */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* ドロップシャドウ */
+    background-color: #ffffff; /* ドロップダウンの背景色 */
+}
+
+.dropdown-item {
+    color: #333; /* ドロップダウンアイテムの文字色 */
+}
+
+.dropdown-item:hover {
+    background-color: #F8E750; /* ホバー時の背景色 */
+    color: #333; /* ホバー時の文字色 */
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    text-decoration: none; /* ホバー時の下線を消す */
+    background-color: #F8E750; /* ホバー時の背景色 */
+}
+
+/* メディアクエリでのレスポンシブ対応 */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* スマホサイズで縦並びに変更 */
+        align-items: center; /* 中央揃え */
+    }
+    nav ul li {
+        margin-bottom: 10px; /* スペースを追加 */
+    }
 }
