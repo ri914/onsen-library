@@ -20,7 +20,7 @@ $background-color: #FFF8E1; /* 明るいクリーム色 */
 body {
   font-family: "Open Sans", sans-serif;
   height: 100vh;
-  background: url("") no-repeat center center; /* 新しい画像を指定 */
+  background: url("https://png.pngtree.com/background/20230426/original/pngtree-japanese-city-lit-up-at-night-with-some-houses-and-a-picture-image_2486076.jpg") no-repeat center center; /* 新しい画像を指定 */
   background-size: cover;
 }
 
@@ -47,12 +47,13 @@ body {
 
 
 .device {
-  border-radius: 5px;
-  padding: 20px;
+  border-radius: 5px; /* 角を丸く */
+  padding: 20px; /* 内部パディングを調整 */
   width: 90%;
   max-width: 320px;
-  background: rgba(255, 248, 225, 0.9); /* 半透明の背景で温泉の湯気のような印象 */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+  position: relative;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
 
   input {
     display: block;
@@ -60,29 +61,29 @@ body {
     margin-bottom: 10px;
     width: 100%;
     border: 1px solid #ddd;
+    transition: border-width 0.2s ease;
     border-radius: 4px;
-    color: #444;
-    transition: border-color 0.3s ease;
+    color: #444; /* テキスト色を調整 */
     
     & + i.fa {
-      color: #FF7043;
-      font-size: 1.2em;
+      color: #fff;
+      font-size: 1em;
       position: absolute;
       margin-top: -47px;
       opacity: 0;
-      left: 10px;
-      transition: all 0.2s ease-in;
+      left: 0;
+      transition: all 0.1s ease-in;
     }
     
     &:focus {
-      border-color: $primary;
-      border-left-width: 5px;
-      outline: none;
-      
       & + i.fa {
         opacity: 1;
-        left: 35px;
+        left: 30px;
+        transition: all 0.25s ease-out;
       }
+      outline: none;
+      border-color: $primary;
+      border-left-width: 35px;
     }
   }
   
@@ -134,4 +135,4 @@ body {
 .field label {
   font-size: 0.9em; /* ラベルのフォントサイズを調整 */
   color: #444; /* ラベルのテキスト色を設定 */
-}
+} 
