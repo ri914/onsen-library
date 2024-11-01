@@ -16,12 +16,13 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto"> <!-- ms-auto から mx-auto に変更 -->
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="<%= user_signed_in? ? index_path : root_path %>">
                             <i class="fas fa-home"></i> ホーム
                         </a>
                     </li>
+
                     <% if user_signed_in? %>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,7 +34,7 @@
                                 <li><a class="dropdown-item" href="<%= edit_user_registration_path %>">設定</a></li>
                                 <li>
                                     <%= form_with url: destroy_user_session_path, method: :delete, local: true do |form| %>
-                                        <%= form.submit "ログアウト", class: 'dropdown-item' %>
+                                        <%= form.submit "ログアウト", class: 'dropdown-item', onclick: "return confirm('ログアウトしますか？');" %>
                                     <% end %>
                                 </li>
                                 <li><a class="dropdown-item" href="<%= cancel_user_registration_path %>">退会</a></li>
@@ -56,6 +57,6 @@
     </nav>
 
     <%= yield %>
-  
+
 </body>
 </html>

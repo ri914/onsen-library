@@ -1,92 +1,137 @@
-/* app/assets/stylesheets/application.scss */
-
+@import 'bootstrap'; 
 @import 'top';
+@import 'custom';
 
 html, body {
-    font-size: 16px; /* 文字サイズ */
+    font-size: 16px;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    color: #333; /* 全体の文字色 */
-    font-family: "游明朝", "Yu Mincho", "游明朝体", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro"; /* フォント種類 */
-    line-height: 1.6; /* 行間 */
-    background: #e8e4df url(../images/bg.jpg); /* 背景色、背景壁紙の読み込み */
-    -webkit-text-size-adjust: none;
-    overflow-x: hidden;
+  margin: 0; /* ボディのマージンを0に設定 */
+  padding: 0; /* ボディのパディングも0に設定 */
+  height: 100%; /* 高さを100%に設定 */
 }
 
-nav {
-    border-bottom: 2px solid gray; /* ボーダー色を変更 */
-    background-color: #343a40; /* ダークな背景色 */
+$primary: #2196F3;
+$primary: #FFB74D; /* 温泉のような暖かいオレンジ */
+$secondary: #FF7043; /* 柔らかいオレンジ */
+$background-color: #FFF8E1; /* 明るいクリーム色 */
+
+body {
+  font-family: "Open Sans", sans-serif;
+  height: 100vh;
+  background: url("") no-repeat center center; /* 新しい画像を指定 */
+  background-size: cover;
 }
 
-nav ul {
-    display: flex;
-    justify-content: center; /* 中央揃え */
-    margin: 0;
-    padding: 0;
-    list-style: none;
+@keyframes spinner {
+  0% { transform: rotateZ(0deg); }
+  100% { transform: rotateZ(359deg); }
 }
 
-nav ul li {
-    position: relative;
+* {
+  box-sizing: border-box;
 }
 
-nav ul li:not(:last-child) {
-    margin-right: 20px; /* アイテム間のスペース */
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  background: url("https://sakuranouta.biz/wp-content/uploads/2023/11/%E6%B8%A9%E6%B3%89_1_%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89-1.jpg") no-repeat center center; /* 新しい画像を指定 */
+  background-size: cover; /* 画像をカバーするように */
 }
 
-nav ul li a {
+
+.device {
+  border-radius: 5px;
+  padding: 20px;
+  width: 90%;
+  max-width: 320px;
+  background: rgba(255, 248, 225, 0.9); /* 半透明の背景で温泉の湯気のような印象 */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+  input {
     display: block;
-    padding: 15px 20px;
-    text-decoration: none;
-    color: #ffffff; /* リンクの文字色を白に */
-    transition: color 0.3s, background-color 0.3s;
-    border-radius: 5px;
-}
-
-nav ul li a:hover {
-    background-color: #F8E750; /* ホバー時の背景色 */
-    color: #333; /* ホバー時の文字色 */
-}
-
-nav ul li.current a {
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #444;
+    transition: border-color 0.3s ease;
+    
+    & + i.fa {
+      color: #FF7043;
+      font-size: 1.2em;
+      position: absolute;
+      margin-top: -47px;
+      opacity: 0;
+      left: 10px;
+      transition: all 0.2s ease-in;
+    }
+    
+    &:focus {
+      border-color: $primary;
+      border-left-width: 5px;
+      outline: none;
+      
+      & + i.fa {
+        opacity: 1;
+        left: 35px;
+      }
+    }
+  }
+  
+  .title {
+    color: #FF7043;
+    font-size: 1.8em;
     font-weight: bold;
-    border-bottom: 2px solid #F8E750; /* 現在のリンクのボーダー色 */
-    color: #F8E750; /* 現在のリンクの文字色 */
-}
-
-/* ドロップダウンメニューのスタイル */
-.dropdown-menu {
-    border: none; /* ボーダーを消す */
-    border-radius: 0; /* 角を丸めない */
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* ドロップシャドウ */
-    background-color: #ffffff; /* ドロップダウンの背景色 */
-}
-
-.dropdown-item {
-    color: #333; /* ドロップダウンアイテムの文字色 */
-}
-
-.dropdown-item:hover {
-    background-color: #F8E750; /* ホバー時の背景色 */
-    color: #333; /* ホバー時の文字色 */
-}
-
-.dropdown-item:focus, .dropdown-item:hover {
-    text-decoration: none; /* ホバー時の下線を消す */
-    background-color: #F8E750; /* ホバー時の背景色 */
-}
-
-/* メディアクエリでのレスポンシブ対応 */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column; /* スマホサイズで縦並びに変更 */
-        align-items: center; /* 中央揃え */
+    margin: 10px 0 30px 0;
+    border-bottom: 1px solid #FFB74D;
+    padding-bottom: 10px;
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 10px;
+    background: $primary;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background: darken($primary, 10%);
     }
-    nav ul li {
-        margin-bottom: 10px; /* スペースを追加 */
-    }
+  }
+}
+
+.note {
+  font-size: 0.9em;
+  color: #d9534f;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  align-items: center; /* チェックボックスとラベルを縦に中央揃え */
+  margin-bottom: 15px; /* フィールド間のマージン */
+}
+
+.field input[type="checkbox"] {
+  margin-right: 10px; /* チェックボックスとラベルの間にスペースを追加 */
+  width: 20px; /* チェックボックスのサイズを調整 */
+  height: 20px; /* チェックボックスのサイズを調整 */
+  cursor: pointer; /* カーソルをポインターに変更 */
+}
+
+.field label {
+  font-size: 0.9em; /* ラベルのフォントサイズを調整 */
+  color: #444; /* ラベルのテキスト色を設定 */
 }

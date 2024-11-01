@@ -1,6 +1,19 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
-import "bootstrap"
-import Rails from '@rails/ujs';
-Rails.start();
+var working = false;
+$('.login').on('submit', function(e) {
+  e.preventDefault();
+  if (working) return;
+  working = true;
+  var $this = $(this),
+    $state = $this.find('button > .state');
+  $this.addClass('loading');
+  $state.html('Authenticating');
+  setTimeout(function() {
+    $this.addClass('ok');
+    $state.html('Welcome back!');
+    setTimeout(function() {
+      $state.html('Log in');
+      $this.removeClass('ok loading');
+      working = false;
+    }, 4000);
+  }, 3000);
+});
