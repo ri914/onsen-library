@@ -1,26 +1,19 @@
 <div id="container">
+  <header class="bg1">
+    <div id="login-container">
+      <h2>日本の温泉地</h2>
+      
+      <!-- 検索窓 -->
+      <div class="search-container">
+        <input type="text" placeholder="キーワードを入力..." class="search-input">
+        <button class="search-button">🔍</button>
+      </div>
 
-<header class="bg1">
-
-<div id="text">
-
-<!--メニュー-->
-<div id="menubar">
-
-<top-nav>
-<ul>
-<li><a href="#about">ABOUT</a></li>
-<li><a href="#gallery">GALLERY</a></li>
-<li><a href="#access">ACCESS</a></li>
-</ul>
-</top-nav>
-<ul class="icons">
-<li><a href="#"><i class="fab fa-facebook"></i></a></li>
-<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-<li><a href="#"><i class="fab fa-youtube"></i></a></li>
-<li><a href="#"><i class="fab fa-instagram-square"></i></a></li>
-</ul>
-</div>
-<!--/#text-->
-
+      <div class="login-links">
+        <a href="<%= new_user_registration_path %>" class="login-link">新規登録</a>
+        <a href="<%= new_user_session_path %>" class="login-link">ログイン</a>
+        <a href="<%= guest_login_path %>" class="login-link">ゲストログイン</a>
+      </div>
+    </div>
+  </header>
 </div>
