@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   root 'home#top' # トップページ
   get 'index', to: 'home#index' # ログイン後のインデックスページへのルート
+  
+  resources :onsens # これを追加
 end
