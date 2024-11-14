@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_22_120600) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_11_101924) do
+  create_table "onsens", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "location"
+    t.text "description"
+    t.string "image"
+    t.text "activities"
+    t.string "best_time_to_visit"
+    t.text "access_info"
+    t.decimal "rating", precision: 2, scale: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "views", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

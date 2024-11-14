@@ -3,8 +3,6 @@ class HomeController < ApplicationController
   end
 
   def index
-    #@onsen_data = Onsen.all.limit(3) # おすすめ温泉地
-    #@tourist_spots = TouristSpot.all.limit(3) # 人気観光スポット
-    #@latest_reviews = Review.order(created_at: :desc).limit(5) # 新着レビュー
+    @onsens = Onsen.all.order(created_at: :desc) # 温泉地の情報を取得
   end
 end
