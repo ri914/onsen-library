@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
+  root 'home#top'
   devise_for :users, controllers: { sessions: 'users/sessions' }
-
   devise_scope :user do
-    get 'guest_login', to: 'users/sessions#guest_login' # ゲストログインのルート
+    get 'guest_login', to: 'users/sessions#guest_login'
   end
-
-  root 'home#top' # トップページ
-  get 'index', to: 'home#index' # ログイン後のインデックスページへのルート
-  
-  resources :onsens # これを追加
+  get 'home/index', to: 'home#index', as: 'home_index'
+  get 'mypage', to: 'users#mypage', as: 'mypage'
+  get 'settings', to: 'users#settings', as: 'settings'
+  resources :onsens
 end
