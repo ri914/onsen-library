@@ -4,7 +4,7 @@
       <h1 class="main-title">温泉マッチング</h1>
       <p class="sub-title">〜あなたの好みの温泉地を見つけましょう〜 <br> ※あなたが訪れた温泉地を投稿することもできます</p>
     </div>
-    <div class="button-container"> <!-- ボタンを包むコンテナ -->
+    <div class="button-container">
       <a href="<%= new_onsen_path %>" class="btn btn-3d-circle btn-post-onsen">
         <span class="btn-3d-circle-content">
           <span class="btn-3d-circle-front">新しい温泉地を <br> 投稿する</span>
@@ -19,7 +19,7 @@
         <span class="btn-3d-circle-back"><i class="fas fa-heart"></i></span>
       </a>
       
-      <a href="<%#= search_onsen_path %>" class="btn btn-3d-circle btn-search-onsen"> <!-- 詳細検索ボタン -->
+      <a href="<%#= search_onsen_path %>" class="btn btn-3d-circle btn-search-onsen">
         <span class="btn-3d-circle-content">
           <span class="btn-3d-circle-front">温泉地を <br> 詳細検索する</span>
         </span>
@@ -27,9 +27,7 @@
       </a>
     </div>
   </main>
-
-  <!-- 温泉地の紹介セクション -->
-  <h2>おすすめの温泉地</h2>
+  <h2>人気の温泉地</h2>
   <div>
     <% @onsens.each do |onsen| %>
       <div>
@@ -44,8 +42,4 @@
       </div>
     <% end %>
   </div>
-
-  <footer>
-    <p>&copy; 2024 温泉情報ポータル. All Rights Reserved.</p>
-  </footer>
 </div>
