@@ -99,18 +99,18 @@ $background-color: #FFF8E1; /* 明るいクリーム色 */
 
 .field {
   display: flex;
-  align-items: center; /* チェックボックスとラベルを縦に中央揃え */
-  margin-bottom: 15px; /* フィールド間のマージン */
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .field input[type="checkbox"] {
-  margin-right: 10px; /* チェックボックスとラベルの間にスペースを追加 */
-  width: 20px; /* チェックボックスのサイズを調整 */
-  height: 20px; /* チェックボックスのサイズを調整 */
-  cursor: pointer; /* カーソルをポインターに変更 */
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .field label {
-  font-size: 0.9em; /* ラベルのフォントサイズを調整 */
-  color: #444; /* ラベルのテキスト色を設定 */
-} 
+  font-size: 0.9em;
+  color: #444;
+}

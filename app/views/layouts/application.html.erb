@@ -39,7 +39,7 @@
                 <%= current_user.email == 'guest@example.com' ? 'ゲスト' : current_user.name %>
               </a>
               <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="<%= home_index_path %>">マイページ</a></li>
+                <li><a class="dropdown-item" href="<%= user_path(current_user) %>">マイページ</a></li>
                 <li><a class="dropdown-item" href="<%= edit_user_registration_path %>">設定</a></li>
                 <li>
                   <%= form_with url: destroy_user_session_path, method: :delete, local: true do |form| %>

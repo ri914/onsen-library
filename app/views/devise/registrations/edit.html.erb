@@ -1,22 +1,38 @@
 <div class="wrapper"> 
   <div class="device">
-    <%= form_with(model: resource, url: registration_path(resource_name), local: true) do |f| %>
+    <%= form_with(model: current_user, url: user_path(current_user), local: true) do |f| %>
       <p class="title">設定</p>
 
       <% if guest_user? %>
         <p>ゲストユーザーは設定を変更できません。</p>
       <% else %>
+        <% if current_user.errors.any? %>
+          <div class="error-messages">
+            <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this user from being saved:</h2>
+            <ul>
+              <% current_user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= f.label :current_password, "現在のパスワード" %>
+        <%= f.password_field :current_password, placeholder: "現在のパスワード", required: true %>
+
+        <%= f.label :avatar, "アイコンをアップロード" %>
+        <%= f.file_field :avatar %>
+        <% if current_user.avatar.attached? %>
+          <div>
+            <p>現在のアイコン:</p>
+            <%= image_tag current_user.avatar, class: "current-avatar" %>
+          </div>
+        <% end %>
+
         <%= f.text_field :name, placeholder: "ユーザー名(20文字まで)", maxlength: 20, required: true %>
-        <i class="fa fa-user"></i>
-
         <%= f.email_field :email, placeholder: "メールアドレス", required: true %>
-        <i class="fa fa-envelope"></i>
-
         <%= f.password_field :password, placeholder: "新しいパスワード(6文字以上)", minlength: 6 %>
-        <i class="fa fa-key"></i>
-
         <%= f.password_field :password_confirmation, placeholder: "新しいパスワード(確認用)" %>
-        <i class="fa fa-key"></i>
 
         <p class="note">* 必須項目はありませんが、パスワードを変更する場合は入力してください。</p>
 
