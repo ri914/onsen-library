@@ -1,8 +1,7 @@
-<div class="wrapper"> 
+<div class="edit-wrapper"> 
   <div class="device">
     <%= form_with(model: current_user, url: user_path(current_user), local: true) do |f| %>
       <p class="title">設定</p>
-
       <% if guest_user? %>
         <p>ゲストユーザーは設定を変更できません。</p>
       <% else %>
@@ -16,26 +15,32 @@
             </ul>
           </div>
         <% end %>
-
+        
         <%= f.label :current_password, "現在のパスワード" %>
         <%= f.password_field :current_password, placeholder: "現在のパスワード", required: true %>
+        <i class="fa fa-key"></i>
 
-        <%= f.label :avatar, "アイコンをアップロード" %>
-        <%= f.file_field :avatar %>
-        <% if current_user.avatar.attached? %>
-          <div>
-            <p>現在のアイコン:</p>
+        <%= f.label :avatar, "アイコンを変更", class: "avatar-label" %>
+        <%= f.file_field :avatar, class: "file-input", style: "display: none;", onchange: "updateImagePreview(this)" %>
+        
+        <div class="current-avatar-container" onclick="document.querySelector('.file-input').click();">
+          <% if current_user.avatar.attached? %>
             <%= image_tag current_user.avatar, class: "current-avatar" %>
-          </div>
-        <% end %>
+          <% else %>
+            <img src="path/to/default_avatar.png" class="current-avatar" alt="デフォルトアイコン" /> <!-- デフォルトアイコン -->
+          <% end %>
+          <p>現在のアイコン</p>
+        </div>
 
         <%= f.text_field :name, placeholder: "ユーザー名(20文字まで)", maxlength: 20, required: true %>
+        <i class="fa fa-user"></i>
         <%= f.email_field :email, placeholder: "メールアドレス", required: true %>
+        <i class="fa fa-envelope"></i>
         <%= f.password_field :password, placeholder: "新しいパスワード(6文字以上)", minlength: 6 %>
+        <i class="fa fa-key"></i>
         <%= f.password_field :password_confirmation, placeholder: "新しいパスワード(確認用)" %>
-
-        <p class="note">* 必須項目はありませんが、パスワードを変更する場合は入力してください。</p>
-
+        <i class="fa fa-key"></i>
+        <p class="note">* 変更がある場合、現在のパスワードを入力してください。</p>
         <%= f.submit "変更を保存", class: "submit-button" %>
       <% end %>
     <% end %>

@@ -1,34 +1,11 @@
-<div class="profile-wrapper">
-  <div class="profile-card">
-    <div class="profile-header">
-      <h1><%= @user.guest? ? "ゲスト" : @user.name %></h1>
-      <p><%= @user.guest? ? "ゲストユーザー" : @user.email %></p>
-    </div>
-
-    <div class="profile-content">
-      <h2>自分の温泉投稿</h2>
-      <ul>
-        <% if @user.onsens.present? %>
-          <% @user.onsens.each do |onsen| %>
-            <li>
-              <strong><%= link_to onsen.name, onsen_path(onsen) %></strong>: <%= onsen.description %>
-            </li>
-          <% end %>
-        <% else %>
-          <li>自分の温泉投稿はありません。</li>
-        <% end %>
-      </ul>
-
-      <h2>保存した温泉投稿</h2>
-      <ul>
-        <% if @user.saved_onsens.present? %>
-          <% @user.saved_onsens.each do |saved_onsen| %>
-            <li><%= link_to saved_onsen.name, onsen_path(saved_onsen) %></li>
-          <% end %>
-        <% else %>
-          <li>保存した温泉投稿はありません。</li>
-        <% end %>
-      </ul>
-    </div>
+<div class="settings-container">
+  <div class="settings-section">
+    <h1>設定</h1>
+  </div>
+  <div class="account-section">
+    <h1>アカウント</h1>
+    <p>メールアドレス <%= @user.email %></p>
+    <p>パスワード ******</p>
+    <%= link_to '編集', edit_user_registration_path %>
   </div>
 </div>
