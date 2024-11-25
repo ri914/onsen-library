@@ -3,36 +3,36 @@
   align-items: center;
   flex-direction: column; 
   width: 100%;
-  background: url("https://i.pinimg.com/originals/bb/eb/bb/bbebbb4df287d64069f021dde49134dd.jpg") no-repeat center center; /* 背景画像 */
+  background: url("https://i.pinimg.com/originals/bb/eb/bb/bbebbb4df287d64069f021dde49134dd.jpg") no-repeat center center;
   background-size: cover;
-  padding: 40px; /* 内側の余白を追加 */
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* 内側の影を追加 */
+  padding: 40px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .title {
   font-family: "Yuji Syuku", serif;
   font-weight: 400;
   font-style: normal;
-  text-align: center; /* 中央揃え */
+  text-align: center;
 }
 
 .main-title {
   font-size: 7rem;
-  color: #C62135; /* 赤系の色 */
-  margin-bottom: 10px; /* 下のマージン */
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* テキストに影を追加 */
+  color: #C62135;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .sub-title {
-  font-size: 1.5rem; /* サブタイトルのサイズ */
-  color: #fff; /* 白色に変更 */
-  line-height: 1.6; /* 行間を広げる */
-  margin-top: 0; /* 上のマージンをリセット */
-  padding: 0 20px; /* 左右のパディングを追加 */
+  font-size: 1.5rem;
+  color: #fff;
+  line-height: 1.6;
+  margin-top: 0;
+  padding: 0 20px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-  border-bottom: 2px solid #C62135; /* ボーダーの色とスタイル */
-  padding-bottom: 10px; /* ボーダーとテキストの間にスペースを追加 */
-  margin-bottom: 20px; /* ボーダーの下にスペースを追加 */
+  border-bottom: 2px solid #C62135;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .btn,
@@ -55,29 +55,29 @@ button.btn {
 
 a.btn-3d-circle {
   display: block;
-  margin: 20px auto; /* 上下にマージンを追加 */
-  padding: 0; /* パディングは0に */
-  border-radius: 50%; /* 角を丸くする */
-  overflow: hidden; /* 内部要素がはみ出さないように */
+  margin: 20px auto;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .btn-3d-circle-content {
-  display: flex; /* フレックスボックスを使用 */
-  justify-content: center; /* 中央揃え */
-  align-items: center; /* 垂直中央揃え */
-  width: 100%; /* 幅を100%に設定 */
-  height: 100%; /* 高さを100%に設定 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   transition: all 0.6s;
-  border-radius: 50%; /* 角を丸くする */
+  border-radius: 50%;
   perspective: 150px;
-  text-align: center; /* テキストを中央揃え */
-  padding: 10px; /* 内部の余白を追加 */
+  text-align: center;
+  padding: 10px;
 }
 
 .btn-3d-circle-front {
-  font-size: 2rem; /* フォントサイズを調整 */
-  color: #fff; /* テキストカラー */
-  line-height: 1.2; /* 行間を調整 */
+  font-size: 2rem;
+  color: #fff;
+  line-height: 1.2;
   font-family: "Yuji Mai", serif;
   font-weight: 400;
   font-style: normal;
@@ -108,29 +108,29 @@ a.btn-3d-circle {
 }
 
 .button-container {
-  display: flex; /* フレックスボックスを使用 */
-  justify-content: center; /* 中央揃え */
+  display: flex;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* 画面幅に応じて折り返し */
-  gap: 20px; /* ボタン間のスペースを追加 */
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .btn-post-onsen {
-  background: linear-gradient(to bottom, #a52a2a 0%, #8b0000 100%); /* ダークレッド系のグラデーション */
-  width: 330px; /* ボタンの幅を330pxに設定 */
-  height: 330px; /* ボタンの高さを330pxに設定 */
+  background: linear-gradient(to bottom, #a52a2a 0%, #8b0000 100%);
+  width: 330px;
+  height: 330px;
 }
 
 .btn-find-onsen {
-  background: linear-gradient(to bottom, #ff6f61 0%, #e53935 50%, #c62828 100%); /* 明るい赤系のグラデーション */
-  width: 400px; /* ボタンの幅を400pxに設定 */
-  height: 400px; /* ボタンの高さを400pxに設定 */
+  background: linear-gradient(to bottom, #ff6f61 0%, #e53935 50%, #c62828 100%);
+  width: 400px;
+  height: 400px;
 }
 
 .btn-search-onsen {
-  background: linear-gradient(to bottom, #d35400 0%, #c0392b 100%); /* 濃いオレンジから赤のグラデーション */
-  width: 330px; /* ボタンの幅を330pxに設定 */
-  height: 330px; /* ボタンの高さを330pxに設定 */
+  background: linear-gradient(to bottom, #d35400 0%, #c0392b 100%);
+  width: 330px;
+  height: 330px;
 }
 
 .fa-plus {
@@ -143,29 +143,4 @@ a.btn-3d-circle {
 
 .fa-search {
   color: #fff;
-}
-
-.edit-wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column; 
-  justify-content: center;
-  padding: 20px;
-  background: url("https://sakuranouta.biz/wp-content/uploads/2023/11/%E6%B8%A9%E6%B3%89_1_%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89-1.jpg") no-repeat center center;
-}
-
-.current-avatar-container {
-  cursor: pointer; /* カーソルをポインタに変更 */
-  display: flex; /* Flexboxを使用 */
-  flex-direction: column; /* 縦方向に配置 */
-  align-items: center; /* 中央揃え */
-  margin: 10px 0; /* 上下のマージン */
-}
-
-.current-avatar {
-  width: 100px; /* 幅を100pxに設定 */
-  height: 100px; /* 高さを100pxに設定 */
-  border-radius: 50%; /* 丸くする */
-  object-fit: cover; /* 画像の比率を保ちながらサイズを調整 */
-  overflow: hidden; /* はみ出た部分を隠す */
 }

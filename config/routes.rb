@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'home/index', to: 'home#index'
   
-  resources :users  # これが必要
+  resources :users
   resources :onsens do
     member do
       post 'save'

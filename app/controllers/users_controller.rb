@@ -10,6 +10,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    if params[:user][:remove_avatar] == "1"
+      @user.avatar.purge
+    end
+  
     if @user.update(params.require(:user).permit(:name, :introduce, :avatar))
       redirect_to user_path
     else

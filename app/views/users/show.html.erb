@@ -1,11 +1,40 @@
 <div class="settings-container">
-  <div class="settings-section">
-    <h1>設定</h1>
-  </div>
-  <div class="account-section">
-    <h1>アカウント</h1>
-    <p>メールアドレス <%= @user.email %></p>
-    <p>パスワード ******</p>
-    <%= link_to '編集', edit_user_registration_path %>
+  <div class="settings-main">
+    <div class="profile-section">
+      <h1>プロフィール</h1>
+      <div class="avatar-container">
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar, class: "current-avatar" %>
+        <% else %>
+          <%= image_tag 'default_avatar.png', class: "current-avatar", alt: "デフォルトアイコン" %>
+        <% end %>
+      </div>    
+      <% if @user.errors.any? %>
+        <div class="alert alert-danger">
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>     
+      <p>メールアドレス: <%= @user.email %></p>
+      <p>パスワード: ******</p>
+      <%= link_to '編集', edit_user_registration_path, class: "edit-link btn btn-primary" %>
+    </div>
+    <div class="onsens-section">
+      <h1>お気に入りの温泉地</h1>
+      <% if @user.saved_onsens.any? %>
+        <ul class="mypage-ul">
+          <% @user.saved_onsens.each do |onsen| %>
+            <li class="mypage-li">
+              <%= link_to onsen.name, onsen_path(onsen) %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="note">お気に入りの温泉地はありません。</p>
+      <% end %>
+    </div>
   </div>
 </div>

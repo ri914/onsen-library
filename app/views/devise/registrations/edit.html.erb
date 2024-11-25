@@ -14,24 +14,26 @@
               <% end %>
             </ul>
           </div>
-        <% end %>
-        
+        <% end %>      
         <%= f.label :current_password, "現在のパスワード" %>
         <%= f.password_field :current_password, placeholder: "現在のパスワード", required: true %>
         <i class="fa fa-key"></i>
-
         <%= f.label :avatar, "アイコンを変更", class: "avatar-label" %>
-        <%= f.file_field :avatar, class: "file-input", style: "display: none;", onchange: "updateImagePreview(this)" %>
-        
+        <%= f.file_field :avatar, class: "file-input", style: "display: none;", onchange: "updateImagePreview(this)" %>       
         <div class="current-avatar-container" onclick="document.querySelector('.file-input').click();">
           <% if current_user.avatar.attached? %>
             <%= image_tag current_user.avatar, class: "current-avatar" %>
           <% else %>
-            <img src="path/to/default_avatar.png" class="current-avatar" alt="デフォルトアイコン" /> <!-- デフォルトアイコン -->
+            <%= image_tag 'default_avatar.png', class: "current-avatar", alt: "デフォルトアイコン" %>
           <% end %>
-          <p>現在のアイコン</p>
+          <p>現在のアイコン</p>     
+          <% if current_user.avatar.attached? %>
+            <div class="remove-avatar" onclick="event.stopPropagation();">
+              <%= f.check_box :remove_avatar, class: "remove-avatar-checkbox" %>
+              <%= f.label :remove_avatar, "アイコンを削除", onclick: "event.stopPropagation();" %>
+            </div>
+          <% end %>
         </div>
-
         <%= f.text_field :name, placeholder: "ユーザー名(20文字まで)", maxlength: 20, required: true %>
         <i class="fa fa-user"></i>
         <%= f.email_field :email, placeholder: "メールアドレス", required: true %>
