@@ -15,19 +15,24 @@ class UsersController < ApplicationController
     end
   
     if @user.update(params.require(:user).permit(:name, :introduce, :avatar))
-      redirect_to user_path
-    else
-      render:edit
+      redirect_to user_path, notice: '変更を保存しました。'
     end
   end
 
   def destroy
     @user = current_user
+  
+    if @user.guest?
+      redirect_to request.referer || root_path, alert: 'ゲストユーザーは退会できません。'
+      return
+    end
+  
     @user.onsens.destroy_all if @user.onsens.present?
+  
     @user.destroy
     redirect_to root_path, notice: '退会しました。'
   end
-
+  
   private
 
   def user_params

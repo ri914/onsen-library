@@ -49,22 +49,22 @@
               <ul class="dropdown-menu" aria-labelledby="userDropdown">
                 <li><a class="dropdown-item" href="<%= user_path(current_user) %>"><i class="fas fa-user-circle"></i> マイページ</a></li>
                 <li><a class="dropdown-item" href="<%= edit_user_registration_path %>"><i class="fas fa-cog"></i> 設定</a></li>
-              <li class="nav-item">
-                <%= form_with url: destroy_user_session_path, method: :delete, local: true do |form| %>
-                  <button type="submit" class="dropdown-item d-flex align-items-center" onclick="return confirm('ログアウトしますか？');">
-                    <i class="fas fa-sign-out-alt me-2"></i>
-                    ログアウト
-                  </button>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= form_with url: user_path(current_user), method: :delete, local: true do |form| %>
-                  <button type="submit" class="dropdown-item d-flex align-items-center" onclick="return confirm('本当に退会しますか？');">
-                    <i class="fas fa-user-slash me-2"></i>
-                    退会
-                  </button>
-                <% end %>
-              </li>
+                <li class="nav-item">
+                  <%= form_with url: destroy_user_session_path, method: :delete, local: true do |form| %>
+                    <button type="submit" class="dropdown-item d-flex align-items-center" onclick="return confirm('ログアウトしますか？');">
+                      <i class="fas fa-sign-out-alt me-2"></i>
+                      ログアウト
+                    </button>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= form_with url: user_path(current_user), method: :delete, local: true do |form| %>
+                    <button type="submit" class="dropdown-item d-flex align-items-center" onclick="return confirm('本当に退会しますか？');">
+                      <i class="fas fa-user-slash me-2"></i>
+                      退会
+                    </button>
+                  <% end %>
+                </li>
               </ul>
             </li>
             <li class="nav-item">
@@ -88,6 +88,16 @@
       </div>
     </div>
   </nav>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+  <% if flash[:notice] %>
+    <div class="alert alert-success">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
   <%= yield %>
   <footer class="footer">
     <div class="footer-content">
@@ -101,4 +111,3 @@
     </div>
   </footer>
 </body>
-</html>
