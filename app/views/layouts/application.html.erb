@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 
 <html lang="ja">
-  <head>
-    <%= render 'layouts/head' %>
-  </head>
-  
   <body>
-    <%= render "layouts/header" %>
-    
-    <%= yield %>
+    <%= render 'layouts/head' %>
+
+    <%= render 'layouts/nav' %>
     
     <%= render 'layouts/flash_messages' %>
     
+    <%= yield %>
+    
     <footer class="footer">
-      <%= render "layouts/footer" %>
+      <%= render 'layouts/footer' %> 
     </footer>
   </body>
 </html>
