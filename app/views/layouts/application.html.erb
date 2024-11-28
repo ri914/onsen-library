@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ja">
   <head>
     <%= render 'layouts/head' %>
@@ -9,7 +10,10 @@
     
     <%= yield %>
     
-    <%= render "layouts/flash_messages" %>
+    <%= render 'layouts/flash_messages' %>
     
-    <%= render "layouts/footer" %>
+    <footer class="footer">
+      <%= render "layouts/footer" %>
+    </footer>
   </body>
+</html>
