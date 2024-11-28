@@ -21,6 +21,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = current_user
+    @user.onsens.destroy_all if @user.onsens.present?
+    @user.destroy
+    redirect_to root_path, notice: '退会しました。'
+  end
+
   private
 
   def user_params

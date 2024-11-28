@@ -39,6 +39,14 @@
    color: #fff;
    border-radius: 8px;
  }
+
+ .nav-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 5px;
+ }
  
  .dropdown-menu {
    background-color: #fff;
