@@ -7,15 +7,18 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
     if params[:user][:remove_avatar] == "1"
       @user.avatar.purge
     end
   
-    if @user.update(params.require(:user).permit(:name, :introduce, :avatar))
-      redirect_to user_path, notice: '変更を保存しました。'
+    if @user.update(params.require(:user).permit(:name, :avatar))
+      redirect_to user_path(@user), notice: '変更を保存しました。'
+    else
+      render 'devise/registrations/edit'
     end
   end
-
+  
   def destroy
     @user = current_user
   
