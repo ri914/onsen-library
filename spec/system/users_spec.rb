@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "User", type: :system do
   let!(:user) { create(:user, email: "test@example.com", password: "password") }
-  let!(:user_with_avatar) do
+  let(:user_with_avatar) do
     user.avatar.attach(io: File.open(Rails.root.join('spec/fixtures/files/default_avatar.png')), filename: 'default_avatar.png', content_type: 'image/png')
     user
   end
@@ -17,8 +17,8 @@ RSpec.describe "User", type: :system do
     end
   end
 
-  describe "ユーザー情報の更新" do
-    it "ユーザーがアバターを削除できること" do
+  describe "ユーザー情報の更新" do  
+    it "ユーザーがアイコンを削除できること" do
       sign_in user_with_avatar
       visit edit_user_registration_path
     
