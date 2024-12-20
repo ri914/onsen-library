@@ -50,13 +50,15 @@ RSpec.describe User, type: :model do
   describe "アイコン" do
     it "アイコンを追加できること" do
       user = User.new(email: "test@example.com", password: "password")
-      user.avatar.attach(io: File.open(Rails.root.join('spec/fixtures/files/default_avatar.png')), filename: 'default_avatar.png', content_type: 'image/png')
+      user.avatar.attach(io: Rails.root.join('spec/fixtures/files/default_avatar.png').open, filename: 'default_avatar.png',
+                         content_type: 'image/png')
       expect(user.avatar).to be_attached
     end
 
     it "アイコンを削除できること" do
       user = User.create(email: "test@example.com", password: "password")
-      user.avatar.attach(io: File.open(Rails.root.join('spec/fixtures/files/default_avatar.png')), filename: 'default_avatar.png', content_type: 'image/png')
+      user.avatar.attach(io: Rails.root.join('spec/fixtures/files/default_avatar.png').open, filename: 'default_avatar.png',
+                         content_type: 'image/png')
       user.avatar.purge
       expect(user.avatar.attached?).to be_falsey
     end

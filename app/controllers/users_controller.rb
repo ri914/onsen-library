@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def show
     @user = User.find(params[:id])
     @page_title = "マイページ"
@@ -11,28 +10,28 @@ class UsersController < ApplicationController
     if params[:user][:remove_avatar] == "1"
       @user.avatar.purge
     end
-  
+
     if @user.update(params.require(:user).permit(:name, :avatar))
       redirect_to user_path(@user), notice: '変更を保存しました。'
     else
       render 'devise/registrations/edit'
     end
   end
-  
+
   def destroy
     @user = current_user
-  
+
     if @user.guest?
       redirect_to request.referer || root_path, alert: 'ゲストユーザーは退会できません。'
       return
     end
-  
+
     @user.onsens.destroy_all if @user.onsens.present?
-  
+
     @user.destroy
     redirect_to root_path, notice: '退会しました。'
   end
-  
+
   private
 
   def user_params

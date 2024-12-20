@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe "User", type: :system do
   let!(:user) { create(:user, email: "test@example.com", password: "password") }
   let(:user_with_avatar) do
-    user.avatar.attach(io: File.open(Rails.root.join('spec/fixtures/files/default_avatar.png')), filename: 'default_avatar.png', content_type: 'image/png')
+    user.avatar.attach(io: Rails.root.join('spec/fixtures/files/default_avatar.png').open, filename: 'default_avatar.png',
+                       content_type: 'image/png')
     user
   end
 
@@ -17,18 +18,18 @@ RSpec.describe "User", type: :system do
     end
   end
 
-  describe "ユーザー情報の更新" do  
+  describe "ユーザー情報の更新" do
     it "ユーザーがアイコンを削除できること" do
       sign_in user_with_avatar
       visit edit_user_registration_path
-    
+
       check "user[remove_avatar]"
       click_button "変更を保存"
-    
+
       expect(page).to have_content("変更を保存しました。")
       expect(user_with_avatar.reload.avatar.attached?).to be_falsey
     end
-    
+
     it "ユーザーがユーザー名と紹介文を更新できること" do
       sign_in user
       visit edit_user_registration_path
