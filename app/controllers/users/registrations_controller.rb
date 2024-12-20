@@ -1,15 +1,15 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  def create
-    super do |resource|
-      if resource.persisted?
-        flash[:notice] = 'アカウントを作成しました。'
-      end
-    end
-  end
-
   def edit
     @page_title = "アカウント設定"
     super
+  end
+
+  def create
+    super do |resource|
+      if resource.persisted?
+        flash[:notice] = t('devise.registrations.account_created')
+      end
+    end
   end
 
   def after_sign_up_path_for(resource)

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     end
 
     if @user.update(params.require(:user).permit(:name, :avatar))
-      redirect_to user_path(@user), notice: '変更を保存しました。'
+      redirect_to user_path(@user), notice: t('devise.registrations.account_updated')
     else
       render 'devise/registrations/edit'
     end
@@ -22,14 +22,14 @@ class UsersController < ApplicationController
     @user = current_user
 
     if @user.guest?
-      redirect_to request.referer || root_path, alert: 'ゲストユーザーは退会できません。'
+      redirect_to request.referer || root_path, alert: t('devise.registrations.guest_account_deletion_error')
       return
     end
 
     @user.onsens.destroy_all if @user.onsens.present?
 
     @user.destroy
-    redirect_to root_path, notice: '退会しました。'
+    redirect_to root_path, notice: t('devise.registrations.account_deleted')
   end
 
   private

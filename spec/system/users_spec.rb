@@ -26,7 +26,7 @@ RSpec.describe "User", type: :system do
       check "user[remove_avatar]"
       click_button "変更を保存"
 
-      expect(page).to have_content("変更を保存しました。")
+      expect(page).to have_content("変更が保存されました。")
       expect(user_with_avatar.reload.avatar.attached?).to be_falsey
     end
 
@@ -37,7 +37,7 @@ RSpec.describe "User", type: :system do
       fill_in "user[name]", with: "Updated User"
       click_button "変更を保存"
 
-      expect(page).to have_content("変更を保存しました。")
+      expect(page).to have_content("変更が保存されました。")
       expect(user.reload.name).to eq("Updated User")
     end
   end

@@ -1,14 +1,10 @@
 class OnsensController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @onsen = Onsen.new
-  end
-
   def create
     @onsen = current_user.onsens.build(onsen_params)
     if @onsen.save
-      redirect_to @onsen, notice: '温泉が投稿されました。'
+      redirect_to @onsen, notice: t('notices.onsen_created')
     else
       render :new
     end
@@ -18,9 +14,9 @@ class OnsensController < ApplicationController
     @onsen = Onsen.find(params[:id])
     @onsen.saved_by_user_id = current_user.id
     if @onsen.save
-      redirect_to @onsen, notice: '温泉を保存しました。'
+      redirect_to @onsen, notice: t('notices.onsen_saved')
     else
-      redirect_to @onsen, alert: '温泉の保存に失敗しました。'
+      redirect_to @onsen, alert: t('alerts.onsen_save_failed')
     end
   end
 

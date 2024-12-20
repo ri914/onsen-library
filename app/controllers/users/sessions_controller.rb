@@ -1,12 +1,12 @@
 class Users::SessionsController < Devise::SessionsController
-
   def guest_login
-    user = User.find_or_create_by!(email: 'guest@example.com') do |user|
+    guest_user = User.find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = 'ゲストユーザー'
     end
-    sign_in user
-    redirect_to home_index_path, notice: 'ゲストユーザーとしてログインしました。'
+    sign_in guest_user
+
+    redirect_to home_index_path, notice: t('devise.sessions.guest_logged_in')
   end
 
   def after_sign_in_path_for(resource)
