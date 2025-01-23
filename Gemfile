@@ -37,7 +37,6 @@ gem "jbuilder"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i(mswin mswin64 mingw x64_mingw jruby)
-gem "tzinfo-data", platforms: %i[mswin mswin64 mingw x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -48,12 +47,11 @@ gem "bootsnap", require: false
 group :development do
   gem 'rubocop-rails'
   gem 'rubocop-airbnb'
-group :development, :test do
-  gem "debug", platforms: %i[mri mswin mswin64 mingw x64_mingw]
+  gem "web-console"
 end
 
-group :development do
-  gem "web-console"
+group :development, :test do
+  gem "debug", platforms: %i[mri mswin mswin64 mingw x64_mingw]
 end
 
 group :test do
